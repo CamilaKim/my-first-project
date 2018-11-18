@@ -1,0 +1,12 @@
+{% extends "areview/base.html" %}
+{% block title %}R E S U L T{%endblock title%}
+{% block header %}R E S U L T{% endblock header%}
+{% block content %}
+<br><br>
+<div style="position: relative; left: 300px; top: 20px;">
+<div id="chart"> {{ chart|safe }}
+&nbsp; &nbsp; &nbsp;<h1> {{ message }} </h1>
+&nbsp; &nbsp; &nbsp;<h3>{{message_Positive}}</h3>
+&nbsp; &nbsp; &nbsp;<h3>{{message_Negative}}</h3>
+</div></div>
+{% endblock content %}

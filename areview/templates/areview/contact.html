@@ -1,0 +1,23 @@
+{% extends "areview/base.html" %}
+{% block title %}C O N T A C T{%endblock title%}
+{% block header %}C O N T A C T{% endblock header%}
+{%block content%}
+<br><br>
+<div class="container">
+<div class="row">
+{% for key,value in context.category.items %}
+	<!--team-1-->
+	<div class="col-lg-3">
+	<div class="our-team-main">
+	<div class="team-front"><br><br>
+	<img src="https://{{ context.photo_url.pop }}" class="img-fluid" />
+		<a href="https://www.{{ value }}.com">
+	<h5>{{ value }}</h5>
+	<p>{{ key }} </p></a>
+	</div>
+	<div class="team-back">
+	</div></div></div>{% endfor %}
+</div>
+    </div>
+
+{% endblock content%}

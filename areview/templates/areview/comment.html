@@ -1,0 +1,49 @@
+{% extends "areview/base.html" %}
+{% block title %}C O M M E N T{%endblock title%}
+{% block header %}C O M M E N T{% endblock header%}
+{% block content %}
+<div style="position: relative; left: 400px; top: 20px;">
+    <div class="columns large-12">
+        <form method="POST" id="post-form">
+            {% csrf_token %}
+            <div class="fieldWrapper" id="the_post" style="position: relative; left: 150px; top: 0px;" >
+               {{ form.text }} &nbsp; &nbsp; &nbsp; &nbsp;
+                <button type="submit" value="Post" class="tiny button">작성하기</button>
+
+
+</div>
+            <div id="results"></div>
+             <h1>───────────────────────────────────────────────</h1>
+        </form>
+    </div>
+
+</div>
+
+</div>
+
+<!-- The feed -->
+<div style="position: relative; left: 500px; top: 50px;">
+    <div class="columns large-12">
+        <ul id="talk">
+            {% for post in all_posts %}
+                <l>
+                    <strong>{{ post.text }}</strong> -
+                    <em>{{ post.author }}</em> -
+                    <span>{{ post.created }}</span>
+                    <input id="count-{{ post.id }}" type="button" class="like" name="{{ post.id }}" value="Like">
+                    <a id="count{{post.id}}"> : {{ post.total_likes }}</a>
+
+                    {% if post.author_id == request.user.id or request.user.is_superuser ==  True %}
+                    <a id='delete-post-{{post.id}}'>delete me</a>
+                    {% endif %}
+
+
+                </l>
+            <br>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<script src="/static/scripts/main.js"></script>
+{% endblock %}
+

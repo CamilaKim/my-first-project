@@ -1,0 +1,57 @@
+<html lang="ko">
+<head>
+{% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %} B A S E 2 {% endblock title%}</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet" href="{% static 'css/graphic2.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script>
+function myPopup(myURL, title, myWidth, myHeight) {
+    var left = (screen.width - myWidth) / 2;
+    var top = (screen.height - myHeight) / 4;
+    var myWindow = window.open(myURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);
+}
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+<div class="w3-sidebar w3-bar-block w3-black w3-large" style=display:none" id="mySidebar">
+  <a href="{% url 'areview:home' %}" class="w3-bar-item w3-button w3-hover-green w3-large">HOME</a>
+  <a href="{% url 'areview:aid'%}" class="w3-bar-item w3-button w3-hover-green w3-large">WHAT IS A.I.D.?</a>
+  <a href="{% url 'areview:study'%}" class="w3-bar-item w3-button w3-hover-green w3-large">STUDY</a>
+  <a href="{% url 'areview:project'%}" class="w3-bar-item w3-button w3-hover-green w3-large">PROJECT</a>
+  <a href="{% url 'areview:comment'%}" class="w3-bar-item w3-button w3-hover-green w3-large">COMMENT</a>
+  <a href="{% url 'areview:contact'%}" class="w3-bar-item w3-button w3-hover-green w3-large">CONTACT</a>
+	<br>
+  <h1><button onclick="w3_close()" class="w3-bar-item w3-bar-block w3-black w3-large w3-hover-green"> CLOSE X </button></h1>
+</div>
+<div class="w3-teal">
+    <div class="w3-container">
+	  <button class="w3-button w3-teal w3-xlarge w3-hover-black" onclick="w3_open()">☰</button>
+        <h1  class="text-center">{% block header %}B A S E{%endblock header%} </h1>
+        {% if request.user.username == "" %}
+        <h5  class="text-right"><a href="{% url 'areview:login'%}" class="w3-bar-item w3-button w3-hover-green w3-large">로그인 </a>
+        <a href="{% url 'areview:join'%}" class="w3-bar-item w3-button w3-hover-green w3-large">회원가입 </a></h5>
+        {% else %}
+        <h2 class="text-right">Hi, {{request.user.username}}</h2>
+        <h5 class="text-right" ><a href="/areview/logout" class="w3-bar-item w3-button w3-hover-green w3-large">logout</a></h5>
+        {% endif %}
+
+        <br><br>
+  </div>
+</div><br><br></head>
+<body>
+{%block content%}
+
+
+
+{% endblock content %}
+</body>
+</html>

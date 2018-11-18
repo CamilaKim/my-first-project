@@ -1,0 +1,44 @@
+{%extends 'areview/base2.html' %}
+{% block title %}P R O J E C T{%endblock title%}
+{% block header %}P R O J E C T{% endblock header%}
+{%block content%}
+<br>
+	<h1  class="text-center">Amazon Reviews</h1><br><br>
+	<div class="container">
+<h2>Search your products</h2>
+<div id="column type-select">
+        <div class="col s12 m4 l4 center-align">
+          {{ a.tag }}
+           <label for="{{ a.id_for_label  }}">{{ a.choice_label }}</label>
+        </div>
+
+  {{title}}
+    <form action="/areview/lists/" method="post"><input type="text" name="keywords">&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="submit">Submit</button><br><br><br><br>
+  {% csrf_token %}
+</form>
+
+
+</div><br>
+		<h2>Recommend Product Keyword </h2>
+		<br>
+		<br><div class="row">
+ {% for key,value in context.category.items %}
+	<!--team-1-->
+	<div class="col-lg-3">
+	<div class="our-team-main">
+	<div class="team-front">
+	<img src="https://images-na.ssl-images-amazon.com/images/I/{{ context.photo_url.pop }}" class="img-fluid" />
+	<h5>{{ key}}</h5>
+	<p>{{ value }} </p>
+	</div>
+	<div class="team-back">
+	<span>
+	<br><br><br>
+	<button1 onclick=" myPopup ('https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{ value }}&rh=i%3Aaps%2Ck%3A', 'web', 1050, 550);">직접방문</button1>
+    <br>
+	</span>
+	</div></div></div>
+	{% endfor %}
+    </div></div>
+{% endblock content%}

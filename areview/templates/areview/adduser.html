@@ -1,0 +1,14 @@
+{% extends "areview/base2.html" %}
+{% block title %}R E G I S T E R{%endblock title%}
+{% block header %}R E G I S T E R{% endblock header%}
+{%block content%}
+<div style="position: relative; left: 500px; top: 70px;"><h3>회원가입 페이지 입니다. </h3><br><br>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <button1 type="submit" style="position: relative; left: 0px; top: 0px;" > 회 원 가 입</button1>
+    <button type="submit" style="position: relative; left: 5px; top: 0px;" onclick="window.location.href='{% url 'areview:login' %}'"  > 로 그 인</button>
+</form>
+</div>
+{% endblock content%}

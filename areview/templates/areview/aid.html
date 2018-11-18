@@ -1,0 +1,26 @@
+{% extends "areview/base2.html" %}
+{% block title %}A I D{%endblock title%}
+{% block header %}A I D{% endblock header%}
+{%block content%}
+<br><br>
+<div class="container">
+<div class="row">
+{% for key,value in context.category.items %}
+	<!--team-1-->
+    <br><br>
+	<div class="col-lg-3">
+	<div class="our-team-main">
+	<div class="team-front"><br><br>
+	<img src={{ context.photo_url.pop }} class="img-fluid" />
+	<h1>{{ value }}</h1><br>
+        <p>{{ key }} </p>
+	</div>
+	<div class="team-back">
+	</div></div></div>{% endfor %}
+</div>
+    </div>
+
+
+
+
+{% endblock content%}

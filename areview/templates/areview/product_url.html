@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<h2>Search your products</h2>
+<div id="column type-select">
+    {% for a in form.option %}
+        <div class="col s12 m4 l4 center-align">
+          {{ a.tag }}
+           <label for="{{ a.id_for_label  }}">{{ a.choice_label }}</label>
+        </div>
+    {% endfor %}
+  {{title}}
+    <form action="/areview/lists/" method="post">
+
+  Keywords: <input type="text" name="keywords"><br>
+  <button type="submit">Submit</button><br>
+  {% csrf_token %}
+</form>
+</div>

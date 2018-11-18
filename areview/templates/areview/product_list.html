@@ -1,0 +1,25 @@
+{% extends "areview/base.html" %}
+{% block title %}P R O D U C T  L I S T S{%endblock title%}
+{% block header %}P R O D U C T  &nbsp; &nbsp;  L I S T S{% endblock header%}
+{% block content %}
+
+<div style="position: relative; left: 300px; top: 50px;">
+<h1>PRODUCT&nbsp;&nbsp;LISTS</h1>
+     <h1>───────────────────────────────────────────────</h1>
+{% for asin in list %}
+    <div>
+        <form action="/areview/scrape/webcrawling" method="post">&nbsp;&nbsp;
+        <p style="color:tomato;"> Asin number : {{ asin }} </p>
+        <h5> Product page: <a href="https://www.amazon.com/dp/{{ asin }}">Go page to link</a></h5>
+        <div>
+            <input type="hidden" id="asin" name="asin"  value="{{ asin }}">
+            <button id="submit" name="submit"/> A n a l y s i s  </button>
+            <br>
+        </div>
+        <br>
+     {% csrf_token %}
+        </form></div>
+    <h3>---------------------------------------------------------------------------------------------------------------------</h3>
+{% endfor %}
+</div>
+{% endblock content %}
